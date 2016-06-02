@@ -85,17 +85,22 @@ function packup (req, res) {
         }
     }
     //复制模板
-	files_handler.copyfolder({
+	/*files_handler.copyfolder({
 		src: './static/crop_templet',
 		dst: folder,
 		callback: function () {
 			console.log("文件夹复制完成");
 			finishedWriting();
 		}
+	});*/
+	files_handler.copyfolder('./static/crop_templet', folder).then(() => {
+		console.log("文件夹复制完成");
+		finishedWriting();
 	});
 	qData = JSON.parse(req.param('qData'));
 	//写入图片
-	files_handler.exists(imgfolder,function(path){
+
+	/*files_handler.exists(imgfolder,function(path){
 		var finished_count = qData.imgs.length;
 		function finishedCountDown () {
             finished_count--;
@@ -116,9 +121,31 @@ function packup (req, res) {
 				}
 			});
 		}
-	},imgfolder);
+	},imgfolder);*/
+	files_handler.exists(imgfolder).then(() => {
+		var finished_count = qData.imgs.length;
+		function finishedCountDown () {
+            finished_count--;
+            if (finished_count == 0) {
+                console.log("写入图片ok");
+                finishedWriting();
+            }
+        }
+		for (var i = 0; i < qData.imgs.length; i++) {
+			base64Data = qData.imgs[i].bg_a.replace(/^data:image\/jpeg;base64,/,""),
+			binaryData = new Buffer(base64Data, 'base64').toString('binary');
+
+			fs.writeFile(imgfolder + "img" + (i+1) +".jpg", binaryData, "binary", function(err) {
+				if(err) {
+					console.log("fail " + err);  
+				} else {
+					finishedCountDown();
+				}
+			});
+		}
+	})
 	//写入配置js文件
-	files_handler.exists(jsfolder,function(path){
+	/*files_handler.exists(jsfolder,function(path){
 		var CONFIG_data = {};
 		CONFIG_data.copyrightBackgroundColor = qData.copyrightBackgroundColor;
 		CONFIG_data.copyrightColor = qData.copyrightColor;
@@ -140,8 +167,30 @@ function packup (req, res) {
 				console.log("写入config.js文件ok");
 				finishedWriting();
 		});
-	},jsfolder);
-	
+	},jsfolder);*/
+	files_handler.exists(jsfolder).then(() => {
+		var CONFIG_data = {};
+		CONFIG_data.copyrightBackgroundColor = qData.copyrightBackgroundColor;
+		CONFIG_data.copyrightColor = qData.copyrightColor;
+		CONFIG_data.showCopyright = qData.showCopyright;
+		CONFIG_data.title = qData.title;
+		CONFIG_data.imgs = [];
+
+		for (var i = 0; i < qData.imgs.length; i++) {
+			CONFIG_data.imgs[i] = {};
+			CONFIG_data.imgs[i]["bg_a"] = "img/img" + (i+1) + ".jpg";
+			CONFIG_data.imgs[i]["bg_b"] = "img/img" + (i+1) + ".jpg";
+			CONFIG_data.imgs[i]["width"] = qData.imgs[i]["width"];
+			CONFIG_data.imgs[i]["height"] = qData.imgs[i]["height"];
+		}
+		fs.writeFile(jsfolder + "config.js", "CONFIG=" + JSON.stringify(CONFIG_data), function(err){  
+			if(err)  
+				console.log("fail " + err);  
+			else  
+				console.log("写入config.js文件ok");
+				finishedWriting();
+		});
+	})
 }
 exports.getHomePage = getHomePage;
 exports.getSpecial = getSpecial;
