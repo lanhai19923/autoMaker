@@ -1,0 +1,24 @@
+{
+  "name": "automaker",
+  "version": "0.0.1",
+  "description": "perfect to build a wap page",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "ejs": "^2.3.4",
+    "express": "^4.13.4",
+    "connect-multiparty": "^2.0.0",
+    "node-native-zip": "^1.1.0",
+    "multer": "^1.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "automaker"
+  ],
+  "author": "zhangfan",
+  "license": "ISC"
+}
