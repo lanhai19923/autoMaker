@@ -2,7 +2,7 @@
 var multer = require('multer');
 var zip = require("node-native-zip");
 var fs = require('fs');
-var files_handler = require('./files_handler');
+var filesHandler = require('./filesHandler');
 var HOST = "http://192.168.100.201:8888/";
 
 
@@ -28,12 +28,7 @@ function uploadImg (req, res) {
 	var d = shasum.digest('hex');
 
 	var target_path = './public/img/uploadImg/' + d + postfix;
-	console.log(target_path.slice(1, target_path.lastIndexOf("/")+1))
-	/*files_handler.exists(target_path.slice(1, target_path.lastIndexOf("/")+1),function(){
-		console.log(tmp_path);
-		console.log(target_path);
-
-	})*/
+	console.log(target_path.slice(1, target_path.lastIndexOf("/")+1));
 
   	// 移动文件
 	fs.rename(tmp_path, target_path, function(err) {
@@ -62,7 +57,7 @@ function packup (req, res) {
 		console.log("ok");
         finishedWriting_count--;
         if (finishedWriting_count == 0) {
-            files_handler.getAllFilesPath(folder, function (pathArr) {
+            filesHandler.getAllFilesPath(folder, function (pathArr) {
             	var data = [];
 				for (var i = 0; i < pathArr.length; i++) {
 					data.push({
@@ -85,44 +80,13 @@ function packup (req, res) {
         }
     }
     //复制模板
-	/*files_handler.copyfolder({
-		src: './static/crop_templet',
-		dst: folder,
-		callback: function () {
-			console.log("文件夹复制完成");
-			finishedWriting();
-		}
-	});*/
-	files_handler.copyfolder('./static/crop_templet', folder).then(() => {
+	filesHandler.copyfolder('./static/crop_templet', folder).then(() => {
 		console.log("文件夹复制完成");
 		finishedWriting();
 	});
 	qData = JSON.parse(req.param('qData'));
 	//写入图片
-
-	/*files_handler.exists(imgfolder,function(path){
-		var finished_count = qData.imgs.length;
-		function finishedCountDown () {
-            finished_count--;
-            if (finished_count == 0) {
-                console.log("写入图片ok");
-                finishedWriting();
-            }
-        }
-		for (var i = 0; i < qData.imgs.length; i++) {
-			base64Data = qData.imgs[i].bg_a.replace(/^data:image\/jpeg;base64,/,""),
-			binaryData = new Buffer(base64Data, 'base64').toString('binary');
-
-			fs.writeFile(path + "img" + (i+1) +".jpg", binaryData, "binary", function(err) {
-				if(err) {
-					console.log("fail " + err);  
-				} else {
-					finishedCountDown();
-				}
-			});
-		}
-	},imgfolder);*/
-	files_handler.exists(imgfolder).then(() => {
+	filesHandler.exists(imgfolder).then(() => {
 		var finished_count = qData.imgs.length;
 		function finishedCountDown () {
             finished_count--;
@@ -145,30 +109,7 @@ function packup (req, res) {
 		}
 	})
 	//写入配置js文件
-	/*files_handler.exists(jsfolder,function(path){
-		var CONFIG_data = {};
-		CONFIG_data.copyrightBackgroundColor = qData.copyrightBackgroundColor;
-		CONFIG_data.copyrightColor = qData.copyrightColor;
-		CONFIG_data.showCopyright = qData.showCopyright;
-		CONFIG_data.title = qData.title;
-		CONFIG_data.imgs = [];
-
-		for (var i = 0; i < qData.imgs.length; i++) {
-			CONFIG_data.imgs[i] = {};
-			CONFIG_data.imgs[i]["bg_a"] = "img/img" + (i+1) + ".jpg";
-			CONFIG_data.imgs[i]["bg_b"] = "img/img" + (i+1) + ".jpg";
-			CONFIG_data.imgs[i]["width"] = qData.imgs[i]["width"];
-			CONFIG_data.imgs[i]["height"] = qData.imgs[i]["height"];
-		}
-		fs.writeFile(path + "config.js", "CONFIG=" + JSON.stringify(CONFIG_data), function(err){  
-			if(err)  
-				console.log("fail " + err);  
-			else  
-				console.log("写入config.js文件ok");
-				finishedWriting();
-		});
-	},jsfolder);*/
-	files_handler.exists(jsfolder).then(() => {
+	filesHandler.exists(jsfolder).then(() => {
 		var CONFIG_data = {};
 		CONFIG_data.copyrightBackgroundColor = qData.copyrightBackgroundColor;
 		CONFIG_data.copyrightColor = qData.copyrightColor;
