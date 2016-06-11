@@ -365,6 +365,12 @@ function _init() {
       var $this = $(this);
       var checkElement = $this.next();
 
+      $(menu).find("li").removeClass('active');
+      $this.parent().addClass("active");
+      if (!!$this.href) {
+        window.location.hash = $this.href;
+      }
+
       //Check if the next element is a menu and is visible
       if ((checkElement.is('.treeview-menu')) && (checkElement.is(':visible')) && (!$('body').hasClass('sidebar-collapse'))) {
         //Close the menu
@@ -728,3 +734,10 @@ function _init() {
     });
   };
 }(jQuery));
+
+
+(function ($){
+  window.onhashchange = function () {
+    $(".content-wrapper iframe").attr("src","/" + window.location.hash.slice(1));
+  }
+})(jQuery);

@@ -1,4 +1,3 @@
-var HOST = '192.168.100.201:8888';
 //实例化一个plupload上传对象
 var uploader = new plupload.Uploader({
     browse_button : 'file', //触发文件选择对话框的按钮，为那个元素id
@@ -75,7 +74,7 @@ uploader.bind('FileUploaded',function(uploader,file,responseObject){
         uploadData["copyrightBackgroundColor"] = !!CONFIG.copyright_backgroundColor?CONFIG.copyright_backgroundColor:'#ffffff';
         console.log(uploadData);
         $.ajax({
-          url:'http://' + HOST + '/upload/packup',
+          url:'http://' + window.location.host + '/upload/packup',
           data: {
             qData:JSON.stringify(uploadData)
           },
@@ -85,6 +84,7 @@ uploader.bind('FileUploaded',function(uploader,file,responseObject){
           //dataType: 'multipart/form-data',
           success: function(data){
             if (data.status) {
+              console.log(data.link)
               window.location = data.link;
             }
           }

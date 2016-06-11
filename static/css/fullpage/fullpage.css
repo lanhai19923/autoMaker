@@ -1,0 +1,127 @@
+.content-wrapper {
+  height: 100%;
+}
+.none-padding {
+  padding: 0;
+}
+.page {
+  height: 100%;
+  background-color: transparent;
+}
+.page1 .work-area {
+  display: none;
+  padding-top: 20px;
+}
+#drag-file-in {
+  box-sizing: border-box;
+  width: 100%;
+  height: 300px;
+  margin: 20px 0;
+  border: 2px dashed #3c8dbc;
+  background: url(../../img/special/upload.svg) no-repeat;
+  background-size: 20%;
+  background-position: center;
+}
+#filelist {
+  line-height: 40px;
+}
+.parameter-setter {
+  background-color: #222d32;
+  min-height: 100%;
+  color: #dddddd;
+}
+.parameter-setter table {
+  display: none;
+  background-color: #ffffff;
+  color: #555555;
+}
+.parameter-setter table td {
+  background-color: #ffffff;
+  color: #555555;
+  vertical-align: middle!important;
+}
+.input-group,.btn {
+  margin: 10px 0;
+}
+
+
+#cut-imgs img {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.borders {
+  position: absolute;
+  top: 0;
+  width: 90%;
+  margin: 0 5%;
+}
+.border {
+  width: 100%;
+  border: 1px solid #ff0000;
+  box-sizing: border-box;
+}
+.border:hover {
+  background-color: rgba(0,0,0,0.2);
+}
+.copyright {
+  width:100%;
+  padding:40px 5% 10px 5%;
+  margin: 0!important;
+  font-size:12px;
+  text-align:center;
+  color:#999;
+}
+#pack {
+  margin-top: 40px;
+}
+
+
+
+.phone-bg {
+  width: 407px;
+  height: 808px;
+  background: url(../../img/fullpage/bg1.png) no-repeat;
+  background-size: contain;
+}
+.phone-bg .screen {
+  position: relative;
+  left: 37px;
+  top: 114px;
+  width: 320px;
+  height: 568px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: #333333;
+}
+.phone-bg .screen:hover {
+  cursor: url("http://localhost:8888/static/img/fullpage/cursor.png"), pointer;
+}
+::-webkit-scrollbar {
+  width: 0;
+  height: 8px;
+  background-color: rgba(127, 132, 146, 0.77);
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(235,87,86,.73);
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+.phone-bg .screen .body {
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+}
+.phone-bg .screen .body iframe {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}

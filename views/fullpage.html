@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>整屏滚动</title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="static/css/m-base-min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="../dashboard/dist/css/AdminLTE.css">
+  <link rel="stylesheet" href="../dashboard/dist/css/skins/skin-blue.min.css">
+  <link rel="stylesheet" href="../static/css/fullpage/fullpage.css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <!-- jQuery 2.1.4 -->
+  <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="container-fluid page page1">
+    <!-- Content Header (Page header) -->
+    <div class="row">
+      <div class="col-lg-3 col-md-3 none-padding">
+        <section class="content-header">
+          <h1>
+            上传图片
+            <small>开启第一次奇妙体验</small>
+          </h1>
+          <div id="upload-wrap">
+            <div id="drag-file-in"></div>
+            <p>
+              <button class="btn btn-primary" id="file">选择文件</button>
+              <button class="btn btn-primary" id="start_upload">开始上传</button>
+            </p>
+            <p id="filelist"></p>
+          </div>
+          <div class="work-area row">
+            <div class="col-lg-6 col-md-6 none-padding" style="position:relative;">
+                  <img id="img" class="box-90" src="" />
+                  <div class="borders">
+                  </div>
+              </div>
+              <div class="col-lg-6 col-md-6 none-padding">
+                  <div id="cut-imgs" class="box-90"></div>
+              </div>
+          </div>
+        </section>
+      </div>
+      <div class="col-lg-5 col-md-5 none-padding">
+        <div class="phone-bg">
+         <div class="screen">
+            <div class="body">
+                <iframe src="http://192.168.1.100/dd/special.html">
+            </div>
+         </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 none-padding">
+        <div class="container-fluid parameter-setter">
+          <div class="input-group">
+            <span class="input-group-addon">标题</span>
+            <input type="text" class="form-control" id="title" placeholder="title" aria-describedby="basic-addon1" value="">
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon">切片份数</span>
+            <input type="text" class="form-control" id="pieces" placeholder="" aria-describedby="basic-addon1" value="3">
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" id="copyright_ifneed" checked="checked">是否需要copyright
+            </label>
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon">copyright背景颜色</span>
+            <input type="text" class="form-control" id="copyright_backgroundColor" placeholder="#ff0000" aria-describedby="basic-addon1">
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon">copyright字体颜色</span>
+            <input type="text" class="form-control" id="copyright_fontColor" placeholder="#666666" aria-describedby="basic-addon1">
+          </div>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <td>x</td>
+                <td>y</td>
+                <td>width</td>
+                <td>height</td>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+          <button class="btn btn-default btn-block" id="addData">自定义切图数据</button>
+          <button class="btn btn-default btn-block" id="preview">预览</button>
+          <button class="btn btn-primary btn-block" id="pack">打个包吧</button>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="static/js/fullpage/fullpage.js"></script> -->
+  </div>
+</body>
+</html>

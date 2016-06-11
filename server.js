@@ -14,6 +14,7 @@ app.use(bodyParser.json({limit:'10mb',strict:false}));
 
 app.get('/', myApp.getHomePage);
 app.get('/special', myApp.getSpecial);
+app.get('/fullpage', myApp.getFullpage);
 
 app.post('/upload/uploadImg', myApp.uploadImg);
 app.post('/upload/packup', myApp.packup);
