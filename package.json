@@ -9,9 +9,19 @@
     "express": "^4.13.4",
     "connect-multiparty": "^2.0.0",
     "node-native-zip": "^1.1.0",
-    "multer": "^1.1.0"
+    "multer": "^1.1.0",
+    "react": "^15.2.1",
+    "react-dom": "^15.2.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "autoprefixer-loader": "^3.2.0",
+    "css-loader": "^0.23.1",
+    "jsx-loader": "^0.13.2",
+    "node-sass": "^3.8.0",
+    "sass-loader": "^4.0.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
